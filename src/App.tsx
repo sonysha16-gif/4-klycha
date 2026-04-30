@@ -30,9 +30,18 @@ const GoldButton = ({ children, href, className = "" }: { children: React.ReactN
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    whileHover={{ scale: 1.05 }}
+    whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(212,175,55,0.6)" }}
     whileTap={{ scale: 0.95 }}
-    className={`inline-block px-8 py-4 bg-gold-gradient text-black font-bold uppercase tracking-wider rounded-sm shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] transition-all ${className}`}
+    whileInView={{ 
+      boxShadow: ["0 0 15px rgba(212,175,55,0.4)", "0 0 40px rgba(212,175,55,0.8)", "0 0 15px rgba(212,175,55,0.4)"],
+      scale: [1, 1.05, 1]
+    }}
+    viewport={{ once: false, margin: "-100px" }}
+    transition={{ 
+      boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+      scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+    }}
+    className={`inline-block px-8 py-4 bg-gold-gradient text-black font-bold uppercase tracking-wider rounded-sm shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all ${className}`}
   >
     {children}
   </motion.a>
@@ -97,12 +106,28 @@ export default function App() {
                 { icon: Heart, label: "Отношения" },
                 { icon: Sprout, label: "Здоровье" }
               ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center lg:items-start group">
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    y: 0,
+                    scale: [1, 1.1, 1],
+                    filter: ["blur(0px)", "brightness(1.5)", "blur(0px)"]
+                  }}
+                  viewport={{ once: false, margin: "-50px" }}
+                  transition={{ 
+                    duration: 1.5, 
+                    delay: idx * 0.2,
+                    ease: "easeInOut"
+                  }}
+                  className="flex flex-col items-center lg:items-start group cursor-pointer"
+                >
                   <div className="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center mb-3 bg-black/40 lg:bg-gold/10 group-hover:bg-gold/30 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] backdrop-blur-md">
                     <item.icon className="w-6 h-6 text-gold group-hover:scale-110 transition-transform" />
                   </div>
                   <p className="text-[11px] uppercase tracking-[0.2em] text-white font-bold drop-shadow-[0_0_12px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_0_10px_rgba(212,175,55,0.4)] transition-all group-hover:text-gold">{item.label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
