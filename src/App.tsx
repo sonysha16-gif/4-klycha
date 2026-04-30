@@ -112,14 +112,15 @@ export default function App() {
                   whileInView={{ 
                     opacity: 1, 
                     y: 0,
-                    scale: [1, 1.1, 1],
-                    filter: ["blur(0px)", "brightness(1.5)", "blur(0px)"]
+                    scale: [1, 1.08, 1],
+                    filter: ["brightness(1)", "brightness(1.4)", "brightness(1)"]
                   }}
                   viewport={{ once: false, margin: "-50px" }}
                   transition={{ 
-                    duration: 1.5, 
-                    delay: idx * 0.2,
-                    ease: "easeInOut"
+                    opacity: { duration: 0.8, delay: idx * 0.2 },
+                    y: { duration: 0.8, delay: idx * 0.2 },
+                    scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.3 },
+                    filter: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.3 }
                   }}
                   className="flex flex-col items-center lg:items-start group cursor-pointer"
                 >
