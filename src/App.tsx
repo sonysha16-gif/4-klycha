@@ -354,6 +354,40 @@ export default function App() {
         </div>
       </section>
 
+      {/* Price & Final CTA Section */}
+      <section className="py-20 md:py-32 px-4 bg-[#0d0d0d] border-t border-gold/10 relative overflow-hidden">
+        {/* Decorative background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-12"
+          >
+            <div className="space-y-4">
+              <h2 className="text-xl md:text-2xl font-serif text-gold-light uppercase tracking-[0.4em]">СТОИМОСТЬ УЧАСТИЯ</h2>
+              <div className="text-6xl md:text-8xl font-serif text-white glow-gold tracking-tighter">
+                10 000 <span className="text-3xl md:text-4xl text-gold">РУБ.</span>
+              </div>
+            </div>
+
+            <div className="space-y-8 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-300 font-light italic leading-relaxed">
+                «Сделайте первый шаг к своей новой жизни и глубокой трансформации 4-х ключевых сфер уже сегодня»
+              </p>
+              
+              <div className="pt-6">
+                <GoldButton href="https://t.me/sofi_arih" className="scale-125 px-12">
+                  ЗАПИСАТЬСЯ НА КВЕСТ
+                </GoldButton>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-16 bg-black flex flex-col items-center border-t border-gold/5">
         <p className="text-gray-500 text-xs tracking-[0.4em] uppercase mb-6 font-serif">КВЕСТ 4 КЛЮЧА</p>
